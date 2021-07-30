@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: my-rabbit
+    restart: always
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 'secret cookie here'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - db-rabbitmq:/var/lib/rabbitmq
+
+  mongodb:
+    image: mongo:4.4
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - db-mongo:/data/db
+      - config-db-mongo:/data/configdb
+  
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+volumes:
+  db-rabbitmq:
+  db-mongo:
+  config-db-mongo:
