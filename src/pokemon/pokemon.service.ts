@@ -44,7 +44,7 @@ export class PokemonService {
       throw new RpcException(error.message);
     }
   }
-  
+
   async deletePokemon(pokemonId: number): Promise<boolean> {
     try {
       const deleted = await this.pokemonRepository.delete(pokemonId);
@@ -54,7 +54,10 @@ export class PokemonService {
     }
   }
 
-  async updatePokemon(pokemonId: number, input: UpdatePokemonInput): Promise<Pokemon> {
+  async updatePokemon(
+    pokemonId: number,
+    input: UpdatePokemonInput,
+  ): Promise<Pokemon> {
     try {
       const pokemon = await this.findByIdPokemon(pokemonId);
 

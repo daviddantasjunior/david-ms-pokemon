@@ -29,7 +29,7 @@ export class PokemonController {
       return await this.pokemonService.createPokemon(input);
     } catch (error) {
       confirmation = false;
-      const filterAckError = ackErrors.filter(ackError =>
+      const filterAckError = ackErrors.filter((ackError) =>
         error.message.includes(ackError),
       );
 
@@ -80,7 +80,7 @@ export class PokemonController {
       return await this.pokemonService.deletePokemon(pokemonId);
     } catch (error) {
       confirmation = false;
-      const filterAckError = ackErrors.filter(ackError =>
+      const filterAckError = ackErrors.filter((ackError) =>
         error.message.includes(ackError),
       );
 
@@ -104,10 +104,13 @@ export class PokemonController {
     const { pokemonId, updatePokemonInput } = input;
 
     try {
-      return await this.pokemonService.updatePokemon(pokemonId, updatePokemonInput);
+      return await this.pokemonService.updatePokemon(
+        pokemonId,
+        updatePokemonInput,
+      );
     } catch (error) {
       confirmation = false;
-      const filterAckError = ackErrors.filter(ackError =>
+      const filterAckError = ackErrors.filter((ackError) =>
         error.message.includes(ackError),
       );
 

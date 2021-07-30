@@ -20,10 +20,7 @@ export class UserService {
     }
   }
 
-  async updateUser(
-    _id: string,
-    user: User,
-  ): Promise<User> {
+  async updateUser(_id: string, user: User): Promise<User> {
     try {
       const { password, nickname, mail } = user;
       const userUpdated = await this.userModel
